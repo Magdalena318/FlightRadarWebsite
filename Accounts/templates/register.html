@@ -1,0 +1,52 @@
+{% extends "base_unauth.html" %}
+
+<!-- {% block include %}  -->
+<!-- {% load  static %} -->
+<!-- <script type="text/javascript" src="{% static 'js/register_script.js' %}"></script> -->
+<!-- {% endblock %} -->
+
+{% block content %}	
+	<form id="register_form" class="col-xl-9 col-sm-12 text-white border border-white" action="" method="post"> 
+		{% csrf_token %}
+		<div class="center-block container-fluid form_data">
+		
+			<div class="row">
+				<h2 class="border border-white bg-black">REGISTRATION FORM</h2>
+			</div>
+			
+			<div class="row">
+				<label class="label" for="id_first_name">First name:</label>
+				{{form.first_name}}
+			</div><br>
+
+			<div class="row">
+				<label class="label" for="id_last_name">Last name:</label>
+				{{form.last_name}}
+			</div><br>
+			
+			<div class="row">
+				<label class="label" for="id_username">Username:</label>
+				{{form.username}}
+			</div><br>
+
+			<div class="row">
+				<label class="label" for="id_email">Email:</label>
+				{{form.email}}
+			</div><br>
+
+			<div class="row">
+				<label class="label" for="id_password">Password:</label>
+				{{form.password}}
+			</div><br>
+			
+			<div class="row">
+				<p class="text-danger text-center">{{result.result}}</p>
+				<p class="text-success text-center">{{result.success}}</p>
+			</div>
+			
+			<div class="row">
+				<input id="submit_registration" class="text-white border border-white bg-black submit_button" type="submit" value="Submit">
+			</div>
+		</div>
+	</form>
+{% endblock %}

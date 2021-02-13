@@ -1,0 +1,23 @@
+import OpenSkyProxy.models as md
+
+
+from OpenSkyProxy.models import Airports, airport_population
+
+md.Airports.objects.all().delete()
+
+#Loading Airport database from file
+airport_path = 'E:\Projects\FlightRadar\Back-end\FlightRadar\OpenSkyProxy\\airports.txt'
+airport_data = open(airport_path, 'r', encoding='mbcs')
+count = 0
+for line in airport_data:
+
+    print(line)
+    print(count)
+
+    entry = Airports()
+    entry.from_file(line)
+    entry.save()
+    count += 1
+    
+    
+md.airport_population()

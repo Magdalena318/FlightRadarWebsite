@@ -1,0 +1,67 @@
+{% extends "base_auth.html" %}
+
+{% block include %} 
+{% load  static %}
+<script type="text/javascript" src="{% static 'js/airports-script.js' %}"></script>
+{% endblock %}
+
+{% block content %}	
+	<form id="lookup_airports_form" class="col-xl-9 col-sm-12 text-white border border-white"> 
+		{% csrf_token %}
+		<div class="container-fluid form_data row right-padding">
+		
+			<div class="nested">
+				<h2 class="border border-white bg-black">LOOK UP AIRPORTS</h2>
+			</div>
+			
+			<div class="row nested">
+				<div class='col'>
+					<div class="row nested">
+						<label class="block_label" for="id">IATA code:</label>
+						<input class="block_input" type="text" id="id">
+					</div><br>
+					
+					<div class="row nested">
+						<label class="block_label" for="name">Name:</label>
+						<input class="block_input" type="text" id="name">
+					</div><br>
+				</div>
+
+				<div class='col'>
+					<div class="row nested">
+						<label class="block_label" for="country">Country:</label>
+						<select id='country' class='block_input'>
+							<option>Not selected</option>
+							{% for country in data.countries %}
+								<option>{{ country }}</option>
+							{% endfor %}
+						</select>
+					</div><br>
+					
+					<div class="row nested">
+						<label class="block_label" for="city">City:</label>
+						<select id='city' class='block_input'>
+							<option>Not selected</option>
+						</select>
+					</div><br>
+				</div>
+			</div>
+
+			<div class="nested">
+				<label for="airports_map">Select area:</label>
+				<div id="airports_map"></div><br>
+			</div>
+			
+			<div class="nested">
+				<input id="submit_lookup_airports" class="text-white border border-white bg-black submit_button" type="button" value="Search">
+			</div>
+			
+			<div id="display_airports_form" class="">
+				<table id="display_airports_table" class="table text-white border border-white">
+				</table>
+			</div>
+		</div>
+	</form>
+	
+
+{% endblock %}

@@ -1,0 +1,104 @@
+.bg-black{
+	background-color: black; 
+}
+
+.table{
+	background-color: black;
+}
+
+.bg-gray{
+	background-color: gray;
+}
+
+#map{
+	height: 670px;
+}
+
+#airports_map{
+	height: 300px;
+}
+
+#route_map{
+	height: 500px;
+	padding-right: 30px;
+	padding-left: 15px;
+}
+
+#account-submenu, #lookup-submenu{
+    display:none;
+}
+
+#account-menu:hover > #account-submenu, #lookup-menu:hover > #lookup-submenu{
+   display:block;
+}
+
+#result{
+	display: flex;
+}
+
+.menu-button, h2 {
+	display: block;
+	width: 100%;	
+	padding: 25px;
+}
+
+h2{
+	margin-bottom: 20px;
+	margin-top: 20px;
+	text-align: center; !important
+}
+
+.form-data{
+	padding: 15px;
+}
+
+.submit_button{
+	width: 100%;
+	margin-bottom: 25px;
+}
+
+.nested {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.label{
+	width: 30%;
+}
+
+.input{
+	width: 70%;
+}
+
+.block_label{
+	width: 50%;
+}
+
+.block_input{
+	width: 50%;
+	height: 25px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.center-block {
+   margin-left:auto;
+   margin-right:auto;
+   display:block;
+   text-align:left;
+   width: 50%;
+   padding-top: 15px;
+}
+
+.right-padding{
+	padding-right: 0;
+}
+
+.right-margin-15{
+	margin-right: 15px;
+	/* display: flex; */
+}
+
+
+

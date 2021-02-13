@@ -1,0 +1,86 @@
+{% extends "base_auth.html" %}
+
+{% block include %} 
+{% load  static %}
+<script type="text/javascript" src="{% static 'js/airplanes-script.js' %}"></script>
+{% endblock %}
+
+{% block content %}	
+	<form id="lookup_airplanes_form" class="col-xl-9 col-sm-12 text-white border border-white"> 
+		{% csrf_token %}
+		<div class="container-fluid form_data row right-padding align-text-bottom">
+		
+			<div class="nested">
+				<h2 class="border border-white bg-black">LOOK UP AIRPLANES</h2>
+			</div>
+			
+			<div class="row">
+				<label class="label" for="name">Name:</label>
+				<input class="input" type="text" id="name">
+			</div><br>
+
+			<div class="row d-flex">
+				<label class="label align-self-center" for="id_flight_range">Flight range:</label>
+				<div id='flight_range_slider' class='input'></div>
+			</div><br>
+			
+			<div class="row d-flex">
+				<label class="label align-self-center" for="id_speed_range">Cruise speed:</label>
+				<div id='speed_range_slider' class='input'></div>
+				<!-- {{form.speed_range}} -->
+			</div><br>
+
+			<div class="row d-flex">
+				<label class="label align-self-center" for="id_max_passenger">Maximum number of passengers:</label>
+				<div id='max_passenger_slider' class='input'></div><br>
+			</div><br><br>
+			
+			<div class="nested">
+				<input id="submit_lookup_airplanes" class="text-white border border-white bg-black submit_button" type="button" value="Search">
+			</div>
+			
+			
+			<div id="display_airplanes_form" class="nested">
+				<table id="display_airplanes_table" class="table text-white border border-white">
+				</table>
+			</div>
+		</div>
+	</form>
+
+	<!-- Setting the sliders -->
+	<script>  	
+		var flight_range_setting = {
+			roots: document.querySelector('#flight_range_slider'),
+			type: 'range',
+			step: 1,
+			limits : { minLimit: {{data.min_flight_range.flight_range__min}}, 
+						maxLimit: {{data.max_flight_range.flight_range__max}}  },
+			rangeValue : { minValue: {{data.min_flight_range.flight_range__min}}, 
+						maxValue: {{data.max_flight_range.flight_range__max}}  },		
+		}
+		var flight_range_slider = wRunner(flight_range_setting);
+		
+		var speed_range_setting = {
+			roots: document.querySelector('#speed_range_slider'),
+			type: 'range',
+			step: 1,
+			limits : { minLimit: {{data.min_speed_range.speed__min}}, 
+						maxLimit: {{data.max_speed_range.speed__max}}  },
+			rangeValue : { minValue: {{data.min_speed_range.speed__min}}, 
+						maxValue: {{data.max_speed_range.speed__max}}  },
+		}
+		var speed_range_slider = wRunner(speed_range_setting);
+		
+		var max_passenger_setting = {
+			roots: document.querySelector('#max_passenger_slider'),
+			type: 'range',
+			step: 1,
+			limits : { minLimit: {{data.max_passenger_min.max_passenger__min}}, 
+						maxLimit: {{data.max_passenger_max.max_passenger__max}}  },
+			rangeValue: { minValue: {{data.max_passenger_min.max_passenger__min}}, 
+						maxValue: {{data.max_passenger_max.max_passenger__max}}  },
+		}
+		var max_passenger_slider = wRunner(max_passenger_setting);
+	</script>
+
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends "base_auth.html" %}
+
+{% block include %} 
+{% load  static %}
+<script type="text/javascript" src="{% static 'js/add-flight.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/onChange.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/default_values.js' %}"></script>
+{% endblock %}
+
+{% block content %}	
+	<form id="add_flight_form" class="col-xl-9 col-sm-12 text-white border border-white"> 
+		{% csrf_token %}
+		<div class="center-block container-fluid form_data">
+		
+			<div class="row">
+				<h2 class="border border-white bg-black">ADD A FLIGHT</h2>
+			</div>
+			
+			<div class="row">
+				<label class="block_label" for="dep_country">Departure country:</label>
+				<select id='dep_country' class='block_input' onchange="onCountryChange(this);">
+					{% for country in data.countries %}
+						<option>{{ country }}</option>
+					{% endfor %}
+				</select>
+			</div><br>
+			
+			<div class="row">
+				<label class="block_label" for="dep_city">Departure city:</label>
+				<select id='dep_city' class='block_input' onchange="onCityChange(this);">
+					{% for city in data.cities %}
+						<option>{{ city }}</option>
+					{% endfor %}
+				</select>
+			</div><br>
+			
+			<div class="row">
+				<label class="block_label" for="dep_airport">Departure airport:</label>
+				<select id='dep_airport' class='block_input' onchange="onAirportChange(this);">
+					{% for airport in data.airports %}
+						<option>{{ airport }}</option>
+					{% endfor %}
+				</select>
+			</div><br>
+			
+			<div class="row">
+				<label class="block_label" for="dep_time">Departure time:</label>
+				<input class="block_input" type="datetime-local" id="dep_time">
+			</div>
+			
+			<hr>
+			
+			<div class="row">
+				<label class="block_label" for="arr_country">Arrival country:</label>
+				<select id='arr_country' class='block_input' onchange="onCountryChange(this);">
+					{% for country in data.countries %}
+						<option>{{ country }}</option>
+					{% endfor %}
+				</select>
+			</div><br>
+			
+			<div class="row">
+				<label class="block_label" for="arr_city">Arrival city:</label>
+				<select id='arr_city' class='block_input' onchange="onCityChange(this);">
+					{% for city in data.cities %}
+						<option>{{ city }}</option>
+					{% endfor %}
+				</select>
+			</div><br>
+			
+			<div class="row">
+				<label class="block_label" for="arr_airport">Arrival airport:</label>
+				<select id='arr_airport' class='block_input' onchange="onAirportChange(this);">
+					{% for airport in data.airports %}
+						<option>{{ airport }}</option>
+					{% endfor %}
+				</select>
+			</div>		
+			<hr>
+
+			<div class="row">
+				<label class="block_label" for="alt_country">Alternate country:</label>
+				<select id='alt_country' class='block_input' onchange="onCountryChange(this);">
+					{% for country in data.countries %}
+						<option>{{ country }}</option>
+					{% endfor %}
+				</select>
+			</div><br>
+			
+			<div class="row">
+				<label class="block_label" for="alt_city">Alternate city:</label>
+				<select id='alt_city' class='block_input' onchange="onCityChange(this);">
+					{% for city in data.cities %}
+						<option>{{ city }}</option>
+					{% endfor %}
+				</select>
+			</div><br>
+			
+			<div class="row">
+				<label class="block_label" for="alt_airport">Alternate airport:</label>
+				<select id='alt_airport' class='block_input' onchange="onAirportChange(this);">
+					{% for airport in data.airports %}
+						<option>{{ airport }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<hr>
+			
+			<div class="row">
+				<label class="block_label" for="plane">Airplane:</label>
+				<select id='plane' class='block_input'>
+					{% for plane in data.planes %}
+						<option>{{ plane }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			
+			<div id="result" class="row">
+				<br><hr>
+				<p id="result_text" class="bold"></p>
+				<p id="flight_id_text" class="bold"> Flight ID is <span id='flight_id'></span></p>
+			</div>
+			
+			<br>
+			<div class="row">
+				<input id="submit_flight" class="text-white border border-white bg-black submit_button" type="button" value="SUBMIT FLIGHT">
+			</div>
+		</div>
+	</form>
+	
+{% endblock %}

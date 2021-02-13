@@ -1,0 +1,158 @@
+{% extends "base_auth.html" %}
+
+{% block include %} 
+{% load  static %}
+<script type="text/javascript" src="{% static 'js/flights-script.js' %}"></script>
+{% endblock %}
+
+{% block content %}	
+	<div id="lookup_airports_form" class="col text-white border border-white add-right-margin right-padding"> 
+		<div class="container-fluid form_data row right-padding">
+		
+			<div class="nested right-padding">
+				<h2 class="border border-white bg-black">LOOK UP FLIGHTS</h2>
+			</div>
+			
+			<div class="row right-padding">
+				<div class="col">
+					<div class="row">
+						<label class="block_label" for="id">Flight ID:</label>
+						<input class="block_input" type="text" id="id">
+					</div><br>
+					
+					<div class="row">
+						<label class="block_label" for="plane">Airplane:</label>
+						<select id='plane' class='block_input'>
+							<option>Not selected</option>
+							{% for plane in data.planes %}
+								<option>{{ plane }}</option>
+							{% endfor %}
+						</select><br>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="row">
+						<label class="block_label" for="dep_time">Departure time:</label>
+						<input class="block_input" type="datetime-local" id="dep_time">
+					</div><br>
+					
+					<div class="row">
+						<label class="block_label" for="arr_time">Arrival time:</label>
+						<input class="block_input" type="datetime-local" id="arr_time">
+					</div><br>
+				</div>
+			</div>
+			<hr>
+			<div class="row right-padding">
+				<div class="col">
+					<div class="row">
+						<label class="block_label" for="dep_country">Departure country:</label>
+						<select id='dep_country' class='block_input'>
+							<option>Not selected</option>
+							{% for country in data.countries %}
+								<option>{{ country }}</option>
+							{% endfor %}
+						</select>
+					</div><br>
+					
+					<div class="row">
+						<label class="block_label" for="dep_city">Departure city:</label>
+						<select id='dep_city' class='block_input'>
+							<option>Not selected</option>
+							{% for city in data.cities %}
+								<option>{{ city }}</option>
+							{% endfor %}
+						</select>
+					</div><br>
+					
+					<div class="row">
+						<label class="block_label" for="dep_airport">Departure airport:</label>
+						<select id='dep_airport' class='block_input'>
+							<option>Not selected</option>
+							{% for airport in data.airports %}
+								<option>{{ airport }}</option>
+							{% endfor %}
+						</select>
+					</div>			
+				</div><br>
+				
+				<div class="col">
+					<div class="row">
+						<label class="block_label" for="arr_country">Arrival country:</label>
+						<select id='arr_country' class='block_input'>
+							<option>Not selected</option>
+							{% for country in data.countries %}
+								<option>{{ country }}</option>
+							{% endfor %}
+						</select>
+					</div><br>
+					
+					<div class="row">
+						<label class="block_label" for="arr_city">Arrival city:</label>
+						<select id='arr_city' class='block_input'>
+							<option>Not selected</option>
+							{% for city in data.cities %}
+								<option>{{ city }}</option>
+							{% endfor %}
+						</select>
+					</div><br>
+					
+					<div class="row">
+						<label class="block_label" for="arr_airport">Arrival airport:</label>
+						<select id='arr_airport' class='block_input'>
+							<option>Not selected</option>
+							{% for airport in data.airports %}
+								<option>{{ airport }}</option>
+							{% endfor %}
+						</select>
+					</div><br>		
+				</div>
+
+				<div class="col">
+					<div class="row">
+						<label class="block_label" for="alt_country">Alternate country:</label>
+						<select id='alt_country' class='block_input'>
+							<option>Not selected</option>
+							{% for country in data.countries %}
+								<option>{{ country }}</option>
+							{% endfor %}
+						</select>
+					</div><br>
+					
+					<div class="row">
+						<label class="block_label" for="alt_city">Alternate city:</label>
+						<select id='alt_city' class='block_input'>
+							<option>Not selected</option>
+							{% for city in data.cities %}
+								<option>{{ city }}</option>
+							{% endfor %}
+						</select>
+					</div><br>
+					
+					<div class="row">
+						<label class="block_label" for="alt_airport">Alternate airport:</label>
+						<select id='alt_airport' class='block_input'>
+							<option>Not selected</option>
+							{% for airport in data.airports %}
+								<option>{{ airport }}</option>
+							{% endfor %}
+						</select>
+					</div><br>
+				</div>
+			</div>
+			<br>
+			
+			<div class="nested right-padding">
+				<input id="submit_lookup_flights" class="text-white border border-white bg-black submit_button" type="button" value="Search">
+			</div>
+		</div>
+		
+		<div id="display_flights_form" class="right-margin-15">
+			<table id="display_flights_table" class="table text-white border border-white">
+			</table>
+		</div>
+	</div>
+	
+
+{% endblock %}

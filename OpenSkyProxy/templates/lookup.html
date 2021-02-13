@@ -1,0 +1,29 @@
+{% extends "base_auth.html" %}
+
+
+{% block content %}	
+	<div id="lookup_page_menu" class="col-xl-9 col-sm-12 text-white">
+		{% load static %}
+		<div class="row">
+			<div class="lookup-links col-xl-4 border border-white">
+				<a href="/lookup-flights/">
+					<img  alt="Flights" src="{% static 'images/lookup_flights.png' %}" class = "img-responsive" width = "100%">
+					<h2 class='text-white'> FLIGHTS </h2>
+				</a>
+			</div>
+			<div class="lookup-links col-xl-4 border border-white">
+				<a href="/lookup-airports/">
+					<img alt="Airports" src="{% static 'images/lookup_airports.png' %}" class = "img-responsive" width = "100%">
+					<h2 class='text-white'> AIRPORTS </h2>
+				</a>
+			</div>
+			<div class="lookup-links col-xl-4 border border-white">
+				<a href="/lookup-airplanes/">
+					<img alt="Planes" src="{% static 'images/lookup_planes.png' %}" class = "img-responsive" width = "100%">
+					<h2 class='text-white'> PLANES </h2>
+				</a>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

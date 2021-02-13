@@ -1,0 +1,12 @@
+{% extends "base_auth.html" %}
+
+{% block include %}
+	{% load  static %}
+	<script type="text/javascript" src="{% static 'js/monitor-script.js' %}"></script>
+{% endblock %}
+
+{% block content %}	
+
+<div id="map" class="col-xl-9"></div>	
+
+{% endblock %}

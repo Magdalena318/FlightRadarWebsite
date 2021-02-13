@@ -1,0 +1,30 @@
+{% extends "base_unauth.html" %}
+
+{% block content %}	
+	<form id="login_form" class="col-xl-9 col-sm-12 text-white border border-white" action="" method="post">
+		{% csrf_token %}
+		<div class="center-block container-fluid form_data">
+		
+			<div class="row">
+				<h2 class="border border-white bg-black">SIGN IN</h2>
+			</div>
+					
+			<div class="row">
+				<label class="label" for="id_username">Username:</label>
+				{{form.username}}
+			</div><br>
+
+
+			<div class="row">
+				<label class="label" for="id_password">Password:</label>
+				{{form.password}}
+			</div><br>
+			
+			<p class="text-danger text-center">{{result.failure}}</p>
+			
+			<div class="row">
+				<input id="submit_login" class="text-white border border-white bg-black submit_button" type="submit" value="Login">
+			</div>
+		</div>
+	</form>
+{% endblock %}

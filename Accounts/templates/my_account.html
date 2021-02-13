@@ -1,0 +1,52 @@
+{% extends "base_auth.html" %}
+
+{% block content %}	
+	<div id="my_account" class="col-xl-9 col-sm-12 text-white border border-white"> 
+		{% csrf_token %}
+		<div class="center-block container-fluid form_data">
+		
+			<div class="row">
+				<h2 class="border border-white bg-black">MY ACCOUNT INFO</h2>
+			</div>
+			
+			{% if data.first_name %}
+			<div class="row">
+				<label class="label" for="id_first_name">First name:</label>
+				{{data.first_name}}
+			</div><br>
+			{% endif %}
+
+			{% if data.last_name %}
+			<div class="row">
+				<label class="label" for="id_last_name">Last name:</label>
+				{{data.last_name}}
+			</div><br>
+			{% endif %}
+			
+			
+			<div class="row">
+				<label class="label" for="id_username">Username:</label>
+				{{data.username}}
+			</div><br>
+
+			{% if data.email %}
+			<div class="row">
+				<label class="label" for="id_email">Email:</label>
+				{{data.email}}
+			</div><br>
+			{% endif %}
+
+			<div class="row">
+				<label class="label" for="id_account_type">Account type:</label>
+				{{data.account_type}}
+			</div>
+			
+			{% if data.my_flights %}
+			<div class="row">
+				<label class="label" for="id_my_flights">My flights:</label>
+				{{data.flights}}
+			</div>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
